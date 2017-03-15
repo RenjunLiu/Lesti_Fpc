@@ -36,6 +36,7 @@ class Lesti_Fpc_Model_Observer
             !$this->_cached &&
             Mage::helper('fpc')->canCacheRequest()) {
             $key = Mage::helper('fpc')->getKey();
+            Mage::app()->getResponse()->setHeader('Key', $key);
             if ($object = $this->_getFpc()->load($key)) {
                 $time = $object->getTime();
                 $body = $object->getContent();
